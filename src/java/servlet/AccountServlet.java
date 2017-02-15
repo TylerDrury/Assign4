@@ -15,7 +15,6 @@
  */
 package servlet;
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -53,24 +52,27 @@ public class AccountServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-          String depositPar = request.getParameter("deposit");
-          double amount = 0;
-          if(depositPar!= null){
-              amount = Double.parseDouble(depositPar);
-              acc.deposit(amount);
-          }
-          String withdrawPar = request.getParameter("withdraw");
-          double Wamount = 0;
-          if(withdrawPar!= null){
-              Wamount = Double.parseDouble(withdrawPar);
-              acc.withdraw(Wamount);
-          }
-          
-          String closePar = request.getParameter("close");
-          if(closePar!= null){
-              acc.close();
-          }
-          
+
+        String depositPar = request.getParameter("deposit");
+        String withdrawPar = request.getParameter("withdraw");
+        String closePar = request.getParameter("close");
+        double amount = 0;
+        double Wamount = 0;
+
+        if (closePar != null) {
+            acc.close();
+        }
+
+        if (withdrawPar != null) {
+            Wamount = Double.parseDouble(withdrawPar);
+            acc.withdraw(Wamount);
+        }
+
+        if (depositPar != null) {
+            amount = Double.parseDouble(depositPar);
+            acc.deposit(amount);
+        }
+
     }
 
 }
