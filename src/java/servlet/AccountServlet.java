@@ -44,6 +44,7 @@ public class AccountServlet extends HttpServlet {
             response.setHeader("Pragma", "no-cache");
             response.setDateHeader("Expires", 0);
             out.println(balance);
+            out.close();
         } catch (IOException ex) {
             Logger.getLogger(AccountServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -52,7 +53,7 @@ public class AccountServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-
+        //recieved help from savanna
         String depositPar = request.getParameter("deposit");
         String withdrawPar = request.getParameter("withdraw");
         String closePar = request.getParameter("close");
