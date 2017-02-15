@@ -52,9 +52,24 @@ public class AccountServlet extends HttpServlet {
     }
 
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse res) {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
           String depositPar = request.getParameter("deposit");
           double amount = 0;
+          if(depositPar!= null){
+              amount = Double.parseDouble(depositPar);
+              acc.deposit(amount);
+          }
+          String withdrawPar = request.getParameter("withdraw");
+          double Wamount = 0;
+          if(withdrawPar!= null){
+              Wamount = Double.parseDouble(withdrawPar);
+              acc.withdraw(Wamount);
+          }
+          
+          String closePar = request.getParameter("close");
+          if(closePar!= null){
+              acc.close();
+          }
           
     }
 
